@@ -1,9 +1,9 @@
 #ifndef _STRING_H_
 #define _STRING_H_ 1
 
-#define NULL 0
+#define NULL ((void *)0)
 
-typedef unsigned long size_t;
+typedef unsigned long int size_t;
 
 size_t strlen(const char *);
 void *memcpy(void *dest, const void *src, size_t n);

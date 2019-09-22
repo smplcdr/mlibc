@@ -1,10 +1,10 @@
-#ifndef _STDDEF_H_
-#define _STDDEF_H_ 1
+#ifndef _STDDEF_H
+#define _STDDEF_H 1
 
-#define NULL 0
+#define NULL ((void *)0)
 
 typedef unsigned long size_t;
 typedef long ssize_t;
 typedef long intptr_t;
 
-#endif
+#endif /* _STDDEF_H */

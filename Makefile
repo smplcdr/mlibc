@@ -1,27 +1,27 @@
-CC = clang
-LD = clang
-AS = nasm
+CC=gcc
+LD=gcc
+AS=as
 
 ARCH=amd64
 
-CFLAGS = -Wall -pipe -Iinclude/ -std=gnu11 -nostdlib -ffreestanding $(OPTIMIZATION)
-LFLAGS = $(CFLAGS) -Llib/
-ASFLAGS = -f elf64
+CFLAGS=-Wall -pipe -Iinclude/ -std=c99 -nostdlib -ffreestanding $(OPTIMIZATION)
+LFLAGS=-melf_x86_64 -Llib/
+ASFLAGS=--64
 
-OPTIMIZATION = -O2
+OPTIMIZATION=-O2
 
 DEBUG = no
 ifeq ($(DEBUG), yes)
 	CFLAGS += -g
 endif
 
-MLIBC_SOURCES = $(wildcard src/*.c)
-MLIBC_SOURCES += $(wildcard arch/${ARCH}/*.asm)
+MLIBC_SOURCES=$(wildcard src/*.c)
+MLIBC_SOURCES+=$(wildcard arch/${ARCH}/*.S)
 
-TMP_OBJECTS = $(MLIBC_SOURCES:.c=.o)
-MLIBC_OBJECTS = $(TMP_OBJECTS:.asm=.o)
+TMP_OBJECTS=$(MLIBC_SOURCES:.c=.o)
+MLIBC_OBJECTS=$(TMP_OBJECTS:.S=.o)
 
-LIB_DIR = lib
+LIB_DIR=lib
 
 mlibc: $(MLIBC_OBJECTS)
 	ar rcs $(LIB_DIR)/libminimalc.a $(MLIBC_OBJECTS)
@@ -29,7 +29,7 @@ mlibc: $(MLIBC_OBJECTS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o: %.asm
+%.o: %.S
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean:

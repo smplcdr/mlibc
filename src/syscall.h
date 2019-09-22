@@ -1,5 +1,5 @@
-#ifndef _SYSCALL_H_
-#define _SYSCALL_H_
+#ifndef _SYSCALL_H
+#define _SYSCALL_H 1
 
 #define SYS_read	0
 #define SYS_write	1
@@ -14,8 +14,8 @@
 
 #define SYS_exit	60
 
-#define SYS_fsync 	74
-#define SYS_fdatasync 	75
+#define SYS_fsync	74
+#define SYS_fdatasync	75
 
 extern long syscall();
 

@@ -5,7 +5,8 @@
 #include "brk.h"
 
 #define ALLOC_INFO_SIZE sizeof(struct alloc_info)
-#define info_from_alloc(alloc) (struct alloc_info *)(alloc - sizeof(struct alloc_info))
+#define info_from_alloc(alloc)	\
+	(struct alloc_info *)(alloc - sizeof(struct alloc_info))
 
 struct alloc_info {
 	size_t size;
@@ -22,7 +23,6 @@ void *malloc(size_t size)
 
 	return (void *)mem;
 }
-
 
 void *calloc(size_t count, size_t size)
 {
@@ -44,7 +44,6 @@ void *realloc(void *p, size_t size)
 	return buf;
 }
 
-
 void free(void *p)
 {
 }
@@ -57,7 +56,6 @@ void *memcpy(void *dest, const void *src, size_t n)
 	return dest;
 }
 
-
 void *memset(void *s, int c, size_t n)
 {
 	for (int i = 0; i < n; i++)
@@ -65,7 +63,6 @@ void *memset(void *s, int c, size_t n)
 
 	return s;
 }
-
 
 void *memmove(void *dest, const void *src, size_t n)
 {
@@ -75,5 +72,4 @@ void *memmove(void *dest, const void *src, size_t n)
 	free(buf);
 
 	return dest;
-}	
-
+}

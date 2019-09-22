@@ -12,29 +12,29 @@ FILE *fopen(const char *path, const char *mode)
 
 	size_t mode_size = strlen(mode);
 	for (int i = 0; i < mode_size; i++) {
-		switch(mode[i]) {
-			case 'r':
-				if (i < mode_size-1 && mode[i+1] == '+')
-					o_flags = O_RDWR;
-				else
-					o_flags = O_RDONLY;
-				break;
-			case 'w':
-				if (i < mode_size-1 && mode[i+1] == '+')
-					o_flags = O_RDWR;
-				else
-					o_flags = O_WRONLY;
+		switch (mode[i]) {
+		case 'r':
+			if (i < mode_size - 1 && mode[i + 1] == '+')
+				o_flags = O_RDWR;
+			else
+				o_flags = O_RDONLY;
+			break;
+		case 'w':
+			if (i < mode_size - 1 && mode[i + 1] == '+')
+				o_flags = O_RDWR;
+			else
+				o_flags = O_WRONLY;
 
-				o_flags |= O_TRUNC | O_CREAT;
-				break;
-			case 'a':
-				if (i < mode_size-1 && mode[i+1] == '+')
-					o_flags = O_WRONLY | O_APPEND;
-				else
-					o_flags = O_RDWR | O_APPEND;
+			o_flags |= O_TRUNC | O_CREAT;
+			break;
+		case 'a':
+			if (i < mode_size - 1 && mode[i + 1] == '+')
+				o_flags = O_WRONLY | O_APPEND;
+			else
+				o_flags = O_RDWR | O_APPEND;
 
-				o_flags |= O_CREAT;
-				break;
+			o_flags |= O_CREAT;
+			break;
 		};
 	}
 

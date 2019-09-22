@@ -1,5 +1,5 @@
-#ifndef _STDLIB_H_
-#define _STDLIB_H_
+#ifndef _STDLIB_H
+#define _STDLIB_H 1
 
 #include "stddef.h"
 
@@ -10,4 +10,4 @@ void free(void *p);
 
 unsigned long int strtoul(const char *nptr, char **endptr, int base);
 
-#endif
+#endif /* _STDLIB_H */
