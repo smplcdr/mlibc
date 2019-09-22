@@ -1,11 +1,9 @@
 CC=gcc
-LD=gcc
 AS=as
 
 ARCH=amd64
 
 CFLAGS=-Wall -pipe -Iinclude/ -std=c99 -nostdlib -ffreestanding $(OPTIMIZATION)
-LFLAGS=-melf_x86_64 -Llib/
 ASFLAGS=--64
 
 OPTIMIZATION=-O2
